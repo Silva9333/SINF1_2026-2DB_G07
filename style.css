@@ -1,0 +1,834 @@
+/* ============================================================
+   style.css - Estilos da Queima das Fitas do Porto 2026
+   ============================================================
+   Este ficheiro define toda a aparência visual do site.
+   Organizado em secções:
+   1. Variáveis CSS (cores e fontes globais)
+   2. Reset e base
+   3. Navbar de navegação
+   4. Layout e containers
+   5. Cards de eventos/artistas/barracas
+   6. Formulários
+   7. Botões
+   8. Badges e tags
+   9. Estrelas de avaliação
+   10. Alertas e mensagens
+   11. Páginas específicas
+   12. Responsivo (mobile)
+   ============================================================ */
+
+/* ---- 1. VARIÁVEIS GLOBAIS ---- */
+:root {
+    --cor-primaria: #8B0000;      /* Vermelho académico - cor principal */
+    --cor-secundaria: #FFD700;    /* Dourado - cor secundária */
+    --cor-escura: #1a1a2e;        /* Azul muito escuro - fundo navbar */
+    --cor-clara: #f8f4f0;         /* Creme claro - fundo das páginas */
+    --cor-texto: #2c2c2c;         /* Quase preto - texto principal */
+    --cor-cinza: #6c757d;         /* Cinza - texto secundário */
+    --cor-borda: #e0d5c8;         /* Borda suave */
+    --sombra: 0 4px 20px rgba(0,0,0,0.12);
+    --sombra-hover: 0 8px 30px rgba(0,0,0,0.20);
+    --raio: 12px;                  /* Arredondamento dos cantos */
+    --transicao: all 0.3s ease;
+}
+
+/* ---- 2. RESET E BASE ---- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--cor-clara);
+    color: var(--cor-texto);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Imagens responsivas */
+img { max-width: 100%; height: auto; }
+
+/* Links */
+a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    transition: var(--transicao);
+}
+a:hover { color: #6b0000; text-decoration: underline; }
+
+/* ---- 3. NAVBAR ---- */
+.navbar {
+    background: linear-gradient(135deg, var(--cor-escura) 0%, #16213e 50%, #0f3460 100%);
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+.navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 65px;
+}
+
+/* Logo da navbar */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: white;
+}
+
+.navbar-brand .logo-icon {
+    font-size: 2rem;
+    filter: drop-shadow(0 0 8px rgba(255,215,0,0.5));
+}
+
+.navbar-brand .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.navbar-brand .brand-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--cor-secundaria);
+    letter-spacing: 0.5px;
+}
+
+.navbar-brand .brand-sub {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Links da navbar */
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    list-style: none;
+}
+
+.navbar-nav a {
+    color: rgba(255,255,255,0.85);
+    padding: 0.5rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transicao);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+}
+
+.navbar-nav a:hover, .navbar-nav a.active {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    text-decoration: none;
+}
+
+/* Badge de admin na navbar */
+.navbar-nav .badge-admin {
+    background: var(--cor-secundaria);
+    color: var(--cor-escura);
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+/* Botão de login na navbar */
+.navbar-nav .btn-nav-login {
+    background: var(--cor-primaria);
+    color: white !important;
+    border-radius: 20px;
+    padding: 0.4rem 1.2rem !important;
+}
+.navbar-nav .btn-nav-login:hover {
+    background: #6b0000;
+    transform: translateY(-1px);
+}
+
+/* ---- 4. LAYOUT E CONTAINERS ---- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    flex: 1;
+}
+
+.container-wide {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+/* Hero Banner da página inicial */
+.hero {
+    background: linear-gradient(135deg, var(--cor-escura) 0%, #8B0000 50%, #c0392b 100%);
+    color: white;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+.hero-content { position: relative; z-index: 1; }
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.hero h1 span { color: var(--cor-secundaria); }
+
+.hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.hero-year {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,215,0,0.5);
+    border-radius: 50px;
+    padding: 0.4rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+}
+
+/* Grelha de cards */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* Cabeçalho de secção */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--cor-primaria);
+}
+
+.section-header h2 {
+    font-size: 1.8rem;
+    color: var(--cor-escura);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ---- 5. CARDS ---- */
+.card {
+    background: white;
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    overflow: hidden;
+    transition: var(--transicao);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--cor-borda);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-hover);
+}
+
+/* Cabeçalho colorido do card de evento */
+.card-header-evento {
+    height: 8px;
+}
+.card-header-evento.cerimonia { background: linear-gradient(90deg, #8B0000, #c0392b); }
+.card-header-evento.concerto  { background: linear-gradient(90deg, #1a1a2e, #0f3460); }
+.card-header-evento.atividade { background: linear-gradient(90deg, #006400, #228B22); }
+
+.card-body {
+    padding: 1.4rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--cor-escura);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin: 0.8rem 0;
+    font-size: 0.88rem;
+    color: var(--cor-cinza);
+}
+
+.card-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.card-meta .icon { font-size: 1rem; }
+
+.card-desc {
+    font-size: 0.9rem;
+    color: #555;
+    flex: 1;
+    line-height: 1.5;
+    /* Limita a 3 linhas com reticências */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-footer {
+    padding: 1rem 1.4rem;
+    background: #fafafa;
+    border-top: 1px solid var(--cor-borda);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* Card de Artista */
+.card-artista {
+    text-align: center;
+}
+
+.artista-avatar {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--cor-primaria), #c0392b);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    margin: 1.5rem auto 1rem;
+    font-weight: 700;
+}
+
+/* Card de Barraca */
+.barraca-cor-barra {
+    height: 6px;
+}
+
+.barraca-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.barraca-status.aberta { background: #d4edda; color: #155724; }
+.barraca-status.fechada { background: #f8d7da; color: #721c24; }
+
+/* ---- 6. FORMULÁRIOS ---- */
+.form-card {
+    background: white;
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    padding: 2rem;
+    max-width: 700px;
+    margin: 2rem auto;
+}
+
+.form-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cor-escura);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--cor-borda);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--cor-escura);
+    font-size: 0.95rem;
+}
+
+.form-group label .obrigatorio { color: var(--cor-primaria); }
+
+.form-control {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 2px solid var(--cor-borda);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: var(--transicao);
+    background: #fafafa;
+    color: var(--cor-texto);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(139,0,0,0.1);
+}
+
+textarea.form-control { min-height: 100px; resize: vertical; }
+
+select.form-control { cursor: pointer; }
+
+/* Grid de formulário para 2 colunas */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* ---- 7. BOTÕES ---- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.6rem 1.4rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: var(--transicao);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.btn:hover { transform: translateY(-2px); text-decoration: none; }
+
+.btn-primary {
+    background: var(--cor-primaria);
+    color: white;
+}
+.btn-primary:hover { background: #6b0000; color: white; }
+
+.btn-secondary {
+    background: var(--cor-escura);
+    color: white;
+}
+.btn-secondary:hover { background: #0f3460; color: white; }
+
+.btn-success {
+    background: #28a745;
+    color: white;
+}
+.btn-success:hover { background: #1e7e34; color: white; }
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+.btn-danger:hover { background: #bd2130; color: white; }
+
+.btn-warning {
+    background: var(--cor-secundaria);
+    color: var(--cor-escura);
+}
+.btn-warning:hover { background: #e6c000; }
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--cor-primaria);
+    color: var(--cor-primaria);
+}
+.btn-outline:hover { background: var(--cor-primaria); color: white; }
+
+.btn-sm { padding: 0.35rem 0.8rem; font-size: 0.8rem; }
+
+.btn-lg {
+    padding: 0.9rem 2rem;
+    font-size: 1.05rem;
+    border-radius: 10px;
+}
+
+/* Grupo de botões */
+.btn-group { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+/* ---- 8. BADGES ---- */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-cerimonia { background: #f8d7da; color: #721c24; }
+.badge-concerto  { background: #cce5ff; color: #004085; }
+.badge-atividade { background: #d4edda; color: #155724; }
+.badge-default   { background: #e2e3e5; color: #383d41; }
+
+/* ---- 9. ESTRELAS DE AVALIAÇÃO ---- */
+.stars { color: var(--cor-secundaria); font-size: 1.1rem; letter-spacing: 1px; }
+.stars-lg { font-size: 1.5rem; }
+
+.rating-count { color: var(--cor-cinza); font-size: 0.8rem; }
+
+/* Sistema de avaliação interativo (JavaScript) */
+.star-picker { display: flex; gap: 5px; margin: 0.5rem 0; }
+
+.star-picker .star-btn {
+    font-size: 2rem;
+    cursor: pointer;
+    color: #ddd;
+    transition: color 0.2s;
+    background: none;
+    border: none;
+    padding: 0;
+    line-height: 1;
+}
+.star-picker .star-btn.ativo { color: var(--cor-secundaria); }
+.star-picker .star-btn:hover { color: var(--cor-secundaria); }
+
+/* ---- 10. ALERTAS ---- */
+.alert {
+    padding: 1rem 1.4rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.95rem;
+    border-left: 4px solid;
+}
+
+.alert-success { background: #d4edda; color: #155724; border-color: #28a745; }
+.alert-error   { background: #f8d7da; color: #721c24; border-color: #dc3545; }
+.alert-warning { background: #fff3cd; color: #856404; border-color: #ffc107; }
+.alert-info    { background: #cce5ff; color: #004085; border-color: #007bff; }
+
+/* Alerta de eventos próximos (48h) */
+.alertas-container {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    border: 2px solid #ffc107;
+    border-radius: var(--raio);
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.alertas-container h3 {
+    color: #856404;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.alerta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(133,100,4,0.2);
+    font-size: 0.9rem;
+    color: #533f03;
+}
+.alerta-item:last-child { border-bottom: none; }
+
+/* ---- 11. PÁGINAS ESPECÍFICAS ---- */
+
+/* Página de detalhe de evento */
+.detail-header {
+    background: linear-gradient(135deg, var(--cor-escura), #8B0000);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: var(--raio) var(--raio) 0 0;
+    margin-bottom: 0;
+}
+
+.detail-header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+
+.detail-body {
+    background: white;
+    border-radius: 0 0 var(--raio) var(--raio);
+    padding: 2rem;
+    box-shadow: var(--sombra);
+}
+
+/* Página de login / registo */
+.auth-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 2rem;
+}
+
+.auth-card {
+    background: white;
+    border-radius: var(--raio);
+    box-shadow: var(--sombra-hover);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 440px;
+}
+
+.auth-logo {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-logo .icon { font-size: 3rem; }
+
+.auth-logo h2 {
+    color: var(--cor-primaria);
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Painel de administração */
+.admin-panel {
+    background: linear-gradient(135deg, var(--cor-escura), #16213e);
+    color: white;
+    border-radius: var(--raio);
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.admin-panel h2 { color: var(--cor-secundaria); font-size: 1.3rem; }
+
+/* Stats do dashboard */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    border-radius: var(--raio);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--sombra);
+    border-top: 4px solid var(--cor-primaria);
+}
+
+.stat-card .stat-number {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--cor-primaria);
+    line-height: 1;
+}
+
+.stat-card .stat-label {
+    font-size: 0.85rem;
+    color: var(--cor-cinza);
+    margin-top: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-card .stat-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+
+/* Tabela de administração */
+.table-container {
+    background: white;
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    overflow: auto;
+}
+
+table.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.admin-table th {
+    background: var(--cor-escura);
+    color: white;
+    padding: 0.9rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--cor-borda);
+    vertical-align: middle;
+}
+
+.admin-table tr:hover td { background: #f9f5f2; }
+.admin-table tr:last-child td { border-bottom: none; }
+
+/* Tabs de filtro */
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 0.5rem 1.2rem;
+    border: 2px solid var(--cor-borda);
+    border-radius: 25px;
+    background: white;
+    color: var(--cor-cinza);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: var(--transicao);
+}
+
+.tab-btn:hover, .tab-btn.active {
+    background: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+    color: white;
+}
+
+/* Perfil de utilizador */
+.profile-header {
+    background: linear-gradient(135deg, var(--cor-escura), #8B0000);
+    color: white;
+    border-radius: var(--raio);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* Footer */
+footer {
+    background: var(--cor-escura);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.85rem;
+    margin-top: auto;
+}
+
+footer span { color: var(--cor-secundaria); }
+
+/* Countdown timer */
+.countdown-box {
+    background: linear-gradient(135deg, #1a1a2e, #8B0000);
+    color: white;
+    border-radius: var(--raio);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.countdown-title { font-size: 0.9rem; opacity: 0.8; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px; }
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.countdown-unit { text-align: center; }
+.countdown-unit .num { display: block; font-size: 2.5rem; color: var(--cor-secundaria); }
+.countdown-unit .label { font-size: 0.7rem; opacity: 0.7; text-transform: uppercase; }
+
+/* ---- 12. RESPONSIVO ---- */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2rem; }
+    .hero p { font-size: 1rem; }
+    .grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .navbar-nav { gap: 0.1rem; }
+    .navbar-nav a { padding: 0.4rem 0.6rem; font-size: 0.8rem; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .admin-panel { flex-direction: column; }
+    .countdown-timer { gap: 1rem; font-size: 1.5rem; }
+    .countdown-unit .num { font-size: 1.8rem; }
+    .profile-header { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 480px) {
+    .container { padding: 1rem; }
+    .navbar { padding: 0 1rem; }
+    .hero { padding: 3rem 1rem 2.5rem; }
+    .form-card { padding: 1.5rem; }
+    .auth-card { padding: 1.5rem; }
+}
