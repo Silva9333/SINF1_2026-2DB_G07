@@ -30,9 +30,9 @@ http://localhost/queima_fitas/
 | Papel         | Email                | Password   |
 |---------------|----------------------|------------|
 | Administrador | admin@queima.pt      | password   |
-| Estudante     | ana@fe.up.pt         | password   |
-| Estudante     | joao@fe.up.pt        | password   |
-| Estudante     | maria@fd.up.pt       | password   |
+| Estudante     | ana@gmail.com        | password   |
+| Estudante     | joao@gmail.com       | password   |
+| Estudante     | maria@gmail.com      | password   |
 
 ---
 
