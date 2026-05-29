@@ -10,7 +10,7 @@
 <footer>
     <p>
         <span>🎓 Queima das Fitas do Porto 2026</span> &nbsp;·&nbsp;
-        Universidade do Porto &nbsp;·&nbsp;
+        Instituto Superior de Engenharia do Porto &nbsp;·&nbsp;
         11 a 17 de Maio de 2026
     </p>
     <p style="margin-top:0.4rem; font-size:0.8rem; opacity:0.6;">
